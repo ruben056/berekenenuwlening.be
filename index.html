@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112213995-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-112213995-1');
+    </script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <title>Bereken uw aflossing</title>
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="row">
+          <div id="leftPane" class="col-3">
+
+          </div>
+
+          <div id="contentPane" class="col-6">
+
+            <header>
+              <div class="jumbotron jumbotron-fluid">
+                <h2 class="display-4">Bereken uw aflossing</h2>
+              </div>
+            </header>
+
+            <section class="aflossingstabel">
+              <div id="userinput">
+
+                <form>
+                  <div class="form-group row">
+                    <label for="ontleendBedrag" class="col-4 col-form-label">Ontleend bedrag</label>
+                    <div class="col-6">
+                      <input type="number" class="form-control" id="ontleendBedrag" value="100000" aria-describedby="ontleendBedragInfo" required>
+                      <small id="ontleendBedragInfo" class="form-text text-muted">
+                        Het totaal ontleende bedrag
+                      </small>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="intrestvoet" class="col-4 col-form-label">Intrestvoet</label>
+                    <div class="col-6">
+                      <input type="number" class="form-control" id="intrestvoet" value="2.00" step="0.01" aria-describedby="intrestvoetInfo" required>
+                      <small id="intrestvoetInfo" class="form-text text-muted">
+                        De toegepaste intrestvoet
+                      </small>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="looptijd" class="col-4 col-form-label">Looptijd</label>
+                    <div class="col-6">
+                      <select class="form-control" id="looptijd" aria-describedby="looptijdInfo">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>0
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>2
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25" selected="selected">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                      </select>
+                      <small id="looptijdInfo" class="form-text text-muted">De looptijd van u lening in jaren</small>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="aflossingsmethode" class="col-4 col-form-label">Aflossingsmethode</label>
+                    <div class="col-6">
+                      <select class="form-control" id="aflossingsmethode" aria-describedby="aflossingsmethodeInfo">
+                        <option>Vaste bedrag per maand</option>
+                      </select>
+                      <small id="aflossingsmethodeInfo" class="form-text text-muted">De manier van aflossing (momenteel enkel "vast bedrag per maand")</small>
+                    </div>
+                  </div>
+                  <button id="btnBerekenAflossing" class="btn btn-secondary" type="button">Bereken aflossing</button>
+                </form>
+              </div>
+
+              <div id="tabel" >
+                <table class="table center table-striped table-hover">
+                  <thead class="thead-inverse">
+                    <tr>
+                      <th>Maand</th>
+                      <th>Kapitaal</th>
+                      <th>Rente</th>
+                      <th>Totaal</th>
+                      <th>Resterend</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- this is filled up by javascript -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <footer>
+
+            </footer>
+          </div>
+
+          <div id="rightPane" class="col-3">
+
+          </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
+  </body>
+</html>
