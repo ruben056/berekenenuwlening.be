@@ -11,7 +11,7 @@
 
       gtag('config', 'UA-112213995-1');
     </script>
-    <meta name="description" content="Bereken de maandelijkse aflossing of mensualilteit van je lening. Als resultaat krijg je een aflossingstabel van je lening(rente per maand, afgelost kapitaal, maandelijkse rente, rest kapitaal, ..."/>
+    <meta name="description" content="Bereken de maandelijkse aflossing of mensualilteit van je lening of krediet. Als resultaat krijg je een aflossingstabel van je lening(rente per maand, afgelost kapitaal, maandelijkse rente, rest kapitaal, ..."/>
 
 
     <meta charset="utf-8">
@@ -27,11 +27,11 @@
     <div class="container">
 
         <div class="row">
-          <div id="leftPane" class="col-1 col-md-3">
+          <div id="leftPane" class="col-0 col-md-3 col-lg-2">
 
           </div>
 
-          <div id="contentPane" class="col-10 col-md-6">
+          <div id="contentPane" class="col-12 col-md-6 col-lg-8">
 
             <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,26 +55,26 @@
               </div>
             </nav>
 
-            <header>
+            <!-- <header>
               <div class="jumbotron jumbotron-fluid">
                 <h2 class="display-4">Bereken uw hypotheek</h2>
               </div>
-            </header>
+            </header> -->
 
             <section id="content">
               <p class="lead">
                 Wat is een hypothecair krediet?
               </p>
               <p>
-                Dit is de meest bekende lening en is het soort lening dat je zal aangaan bij bvb het kopen van <em>vastgoed</em>.
+                Dit is het meest bekend en is het soort krediet dat je zal aangaan bij bvb het kopen van <em>vastgoed</em>.
               </p>
               <p>
-                Bij een hypothecaire lening eist verstrekker van de lening dat een goed in <em>onderpand</em> wordt gegeven
-                door de lener.
+                Bij een hypothecair krediet eist verstrekker van de lening dat een goed in <em>onderpand</em> wordt gegeven
+                door de kredietnemer.
                 Bij een woonlening betreft dit meestal het pand dat wordt aangekocht.
               </p>
               <p>
-                Indien de lener niet betaald dan mag de hypotheekhouder(bank) het onderpand verkopen.
+                Indien de kredietnemer niet betaald dan mag de hypotheekhouder(bank) het onderpand verkopen.
                 De hypotheekhouder is ook de eerste in rang om de opbrengsten uit verkoop te ontvangen om
                 de lening + extra kosten te betalen.
               </p>
@@ -90,13 +90,16 @@
             <hr class="fancy"/>
 
             <section id="aflossingstabel">
+              <p class="lead">
+                Bereken uw maandelijkse aflossing
+              </p>
               <div id="userinput">
 
                 <form>
                   <div class="form-group row">
                     <label for="ontleendBedrag" class="col-4 col-form-label">Ontleend bedrag</label>
                     <div class="col-6">
-                      <input type="number" class="form-control" id="ontleendBedrag" value="100000" aria-describedby="ontleendBedragInfo" required>
+                      <input type="number" class="form-control" id="ontleendBedrag" value="100000" aria-describedby="ontleendBedragInfo" step="10000"required>
                       <small id="ontleendBedragInfo" class="form-text text-muted">
                         Het totaal ontleende bedrag
                       </small>
@@ -185,7 +188,7 @@
             </footer>
           </div>
 
-          <div id="rightPane" class="col-1 col-md-3">
+          <div id="rightPane" class="col-0 col-md-3 col-lg-2">
 
           </div>
         </div>
