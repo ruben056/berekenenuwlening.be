@@ -31,32 +31,47 @@ $(document).ready(function(){
     var ontleendBedrag = $("#ontleendBedrag").val();
     var intrestvoet = $("#intrestvoet").val() / 100;
     var looptijdInMaanden = 12 * $("#looptijd").val();
-    console.log("ontleendBedrag : " + ontleendBedrag + ", intrestvoet : " + intrestvoet + ", looptijd : " + looptijdInMaanden);
+    var aflossingsMethode = $("#aflossingsmethode").val()
 
-    var maandelijkseIntrest = Math.pow(1+intrestvoet, 1/12) - 1;
-    var maandelijksBedrag = ontleendBedrag / ((1-Math.pow(1+maandelijkseIntrest,-looptijdInMaanden))/maandelijkseIntrest);
-    console.log("maandelijkseIntrest : " + maandelijkseIntrest + ", maandelijksBedrag : " + maandelijksBedrag);
+    if(aflossingsMethode == "Vast bedrag per maand"){
+      var maandelijkseIntrest = Math.pow(1+intrestvoet, 1/12) - 1;
+      var maandelijksBedrag = ontleendBedrag / ((1-Math.pow(1+maandelijkseIntrest,-looptijdInMaanden))/maandelijkseIntrest);
+      console.log("maandelijkseIntrest : " + maandelijkseIntrest + ", maandelijksBedrag : " + maandelijksBedrag);
 
-    //2. calculate aflossingen
-    var aflossingen = [looptijdInMaanden+1];
-    for (var i = 0; i < looptijdInMaanden+1; i++) {
+      //2. calculate aflossingen
+      var aflossingen = [looptijdInMaanden+1];
+      for (var i = 0; i < looptijdInMaanden+1; i++) {
 
-      if(isEersteMaand(i)){
-        aflossingen[i] = {maand: i, kapitaal : 0, rente: 0, totaal: 0, resterend: ontleendBedrag};
-        continue;
+        if(isEersteMaand(i)){
+          aflossingen[i] = {maand: i, kapitaal : 0, rente: 0, totaal: 0, resterend: ontleendBedrag};
+          continue;
+        }
+
+        let openstaandKapitaal = aflossingen[i-1].resterend;
+        let rente = openstaandKapitaal * maandelijkseIntrest;
+        let kapitaal = maandelijksBedrag - rente;
+        let nieuwOpenstaandKapitaal = openstaandKapitaal - kapitaal;
+
+        aflossingen[i] = {maand: i, kapitaal : kapitaal.toFixed(2), rente: rente.toFixed(2),
+                            totaal: maandelijksBedrag.toFixed(2), resterend: nieuwOpenstaandKapitaal.toFixed(2)};
       }
 
-      let openstaandKapitaal = aflossingen[i-1].resterend;
-      let rente = openstaandKapitaal * maandelijkseIntrest;
-      let kapitaal = maandelijksBedrag - rente;
-      let nieuwOpenstaandKapitaal = openstaandKapitaal - kapitaal;
-
-      aflossingen[i] = {maand: i, kapitaal : kapitaal.toFixed(2), rente: rente.toFixed(2),
-                          totaal: maandelijksBedrag.toFixed(2), resterend: nieuwOpenstaandKapitaal.toFixed(2)};
+      return aflossingen
+    }
+    else if( aflossingsMethode == "Aflossingsvrij"){
+      let rente = (ontleendBedrag * intrestvoet) / 12;
+      rente = rente.toFixed(2);
+      var aflossingen = [looptijdInMaanden];
+      for (var i = 0; i < looptijdInMaanden; i++) {
+        aflossingen[i] = {maand: i, kapitaal : 0, rente: rente, totaal: rente, resterend: ontleendBedrag};
+      }
+      return aflossingen;
+    }
+    else {
+      console.log("aflossings methode : " + aflossingsMethode + " nog niet geimplementeerd");
     }
 
-    return aflossingen
-
+    return [];
 
     function isEersteMaand(i){
       return (i == 0);
